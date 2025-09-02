@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is how the project was made.
 
-## Getting Started
+Generate api key.
+Make .env.local and put the api key in it (TMDB_API_KEY).
+Make api routes in app/api/(search,discover,genres,similar)/route.ts.
+In the route.ts make a export function GET which has a argument 'request'.
+In this function use searchParams to get the 'query' in a var and fetch the data from the url https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&api_key=${process.env.TMDB_API_KEY}.
+Convert the response to json and return it. (Response.json(data))
+Same with discover route which will return the movie by searching genre and year but with url https://api.themoviedb.org/3/discover/movie?with_genres=${encodeURIComponent(with_genres)}&primary_release_year=${encodeURIComponent(primary_release_year)}&api_key=${process.env.TMDB_API_KEY}
+Also same with genres route to get all the genres with url https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.TMDB_API_KEY}
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
